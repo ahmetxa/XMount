@@ -50,6 +50,14 @@ def pre_build_cleanup(piko_directory: Path) -> None:
         if path.exists():
             shutil.rmtree(path)
 
+    # Shared patches compatible only with legacy Twitter and Instagram import their
+    # Constants, which the steps above remove.
+    for path in [
+        piko_directory / "patches/src/main/kotlin/app/morphe/patches/all/misc/updates/DisablePlayStoreUpdates.kt",
+    ]:
+        if path.exists():
+            path.unlink()
+
     # Keep twitter/bringbacktwitter assets for Bring back twitter patch
     twitter_res = piko_directory / "patches/src/main/resources/twitter"
     if twitter_res.exists():
