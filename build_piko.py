@@ -13,7 +13,6 @@ PIKO_BRANCH = os.environ.get("PIKO_BRANCH", "x-lite")
 XLITE_CONSTANTS = (
     "patches/src/main/kotlin/app/crimera/patches/newx/utils/Constants.kt"
 )
-# Name Morphe shows for the source; the icon is patches-bundle.png in this repository.
 BUNDLE_NAME = "XMount"
 BUNDLE_DESCRIPTION = "X patches based on Piko, with root mount support"
 
@@ -53,8 +52,6 @@ def pre_build_cleanup(piko_directory: Path) -> None:
         if path.exists():
             shutil.rmtree(path)
 
-    # Shared patches compatible only with legacy Twitter and Instagram import their
-    # Constants, which the steps above remove.
     for path in [
         piko_directory / "patches/src/main/kotlin/app/morphe/patches/all/misc/updates/DisablePlayStoreUpdates.kt",
     ]:
