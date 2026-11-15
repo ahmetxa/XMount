@@ -150,7 +150,6 @@ def write_patches_bundle(
         "bundle_name": BUNDLE_NAME,
     }
     if not signed:
-        # An unsigned release has no .asc asset to point at.
         del metadata["signature_download_url"]
     Path(PATCHES_BUNDLE_FILE).write_text(
         json.dumps(metadata, indent=2) + "\n",

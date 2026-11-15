@@ -6,7 +6,6 @@ import tempfile
 from dataclasses import dataclass
 from pathlib import Path
 
-# The fork carries the root mount support on top of crimera/piko x-lite.
 PIKO_REPO = os.environ.get("PIKO_REPO", "ahmetxa/piko")
 PIKO_REPOSITORY = f"https://github.com/{PIKO_REPO}.git"
 PIKO_BRANCH = os.environ.get("PIKO_BRANCH", "x-lite")
@@ -93,7 +92,6 @@ def set_project_version(piko_directory: Path, version: str) -> None:
 
 
 def set_bundle_identity(piko_directory: Path) -> None:
-    """Set the bundle name and description in the temporary Piko checkout."""
     build_script_path = piko_directory / "patches/build.gradle.kts"
     build_script = build_script_path.read_text(encoding="utf-8")
     about_blocks = list(re.finditer(r"^\s*about\s*\{[^}]*\}", build_script, re.MULTILINE))

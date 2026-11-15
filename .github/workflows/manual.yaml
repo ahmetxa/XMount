@@ -13,14 +13,12 @@ concurrency:
 
 permissions:
   contents: write
-  # Gradle resolves the Morphe and Piko libraries from GitHub Packages.
   packages: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Signing is optional: without the secret the bundle is released unsigned.
       HAS_GPG_KEY: ${{ secrets.GPG_PRIVATE_KEY != '' }}
 
     steps:
