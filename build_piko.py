@@ -13,6 +13,9 @@ PIKO_BRANCH = os.environ.get("PIKO_BRANCH", "x-lite")
 XLITE_CONSTANTS = (
     "patches/src/main/kotlin/app/crimera/patches/newx/utils/Constants.kt"
 )
+# Name Morphe shows for the source; the icon is patches-bundle.png in this repository.
+BUNDLE_NAME = "XMount"
+BUNDLE_DESCRIPTION = "X patches based on Piko, with root mount support"
 
 
 @dataclass(frozen=True)
@@ -92,6 +95,29 @@ def set_project_version(piko_directory: Path, version: str) -> None:
     properties_path.write_text("".join(lines), encoding="utf-8")
 
 
+def set_bundle_identity(piko_directory: Path) -> None:
+    """Set the bundle name and description in the temporary Piko checkout."""
+    build_script_path = piko_directory / "patches/build.gradle.kts"
+    build_script = build_script_path.read_text(encoding="utf-8")
+    about_blocks = list(re.finditer(r"^\s*about\s*\{[^}]*\}", build_script, re.MULTILINE))
+    if len(about_blocks) != 1:
+        raise ValueError("Piko patches/build.gradle.kts must contain exactly one about block")
+
+    about = about_blocks[0].group(0)
+    for field, value in (("name", BUNDLE_NAME), ("description", BUNDLE_DESCRIPTION)):
+        about, count = re.subn(
+            rf'^(\s*){field}\s*=\s*".*"$',
+            lambda match: f'{match.group(1)}{field} = "{value}"',
+            about,
+            flags=re.MULTILINE,
+        )
+        if count != 1:
+            raise ValueError(f"Piko about block must contain exactly one {field}")
+
+    start, end = about_blocks[0].span()
+    build_script_path.write_text(build_script[:start] + about + build_script[end:], encoding="utf-8")
+
+
 def build_piko_patches(
     patch_version: str, output: str | None = None
 ) -> PikoBuild:
@@ -126,6 +152,7 @@ def build_piko_patches(
 
         pre_build_cleanup(piko_directory)
         set_project_version(piko_directory, patch_version)
+        set_bundle_identity(piko_directory)
 
         subprocess.run(
             ["./gradlew", "clean", "buildAndroid"],

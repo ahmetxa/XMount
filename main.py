@@ -5,7 +5,7 @@ from pathlib import Path
 import re
 
 import github
-from build_piko import PikoBuild, build_piko_patches
+from build_piko import BUNDLE_NAME, PikoBuild, build_piko_patches
 from build_variants import get_xlite_patches
 from constants import REPO
 from download_bins import download_morphe_cli
@@ -115,6 +115,7 @@ def has_release_content_changed(
     return (
         previous_app_version != app_version
         or not piko_build.commit.startswith(previous_piko_commit)
+        or metadata.get("bundle_name") != BUNDLE_NAME
     )
 
 
@@ -142,10 +143,11 @@ def write_patches_bundle(
         "version": release_tag,
         "download_url": f"https://github.com/{repo}/releases/download/{release_tag}/{mpp_filename}",
         "created_at": now,
-        "description": f"Piko x-lite patch bundle for Morphe ({release_tag}).",
+        "description": f"{BUNDLE_NAME} patch bundle for Morphe ({release_tag}).",
         "signature_download_url": f"https://github.com/{repo}/releases/download/{release_tag}/{mpp_filename}.asc",
         "app_version": app_version,
         "piko_commit": piko_build.commit,
+        "bundle_name": BUNDLE_NAME,
     }
     if not signed:
         # An unsigned release has no .asc asset to point at.
