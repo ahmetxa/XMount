@@ -1,8 +1,9 @@
 {
-  "version": "v0.3.0",
-  "download_url": "https://github.com/ahmetxa/piko-newx/releases/download/v0.3.0/patches-0.3.0.mpp",
-  "created_at": "2026-11-14T21:16:42",
-  "description": "Piko x-lite patch bundle for Morphe (v0.3.0).",
+  "version": "v0.3.1",
+  "download_url": "https://github.com/ahmetxa/piko-newx/releases/download/v0.3.1/patches-0.3.1.mpp",
+  "created_at": "2026-11-15T08:53:15",
+  "description": "XMount patch bundle for Morphe (v0.3.1).",
   "app_version": "12.43.0-prod.01",
-  "piko_commit": "d645915a522e4d37602d6cc866ab54448fcbc7d0"
+  "piko_commit": "d645915a522e4d37602d6cc866ab54448fcbc7d0",
+  "bundle_name": "XMount"
 }
