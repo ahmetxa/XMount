@@ -1,3 +1,14 @@
+## [0.4.0](https://github.com/ahmetxa/XMount/compare/v0.3.1...v0.4.0) (2026-11-17)
+
+### 🐛 Bug Fixes
+* **Twitter:** Enable legacy patches by default again ([962967c](https://github.com/ahmetxa/piko/commit/962967c0140284a136c2344a4c431c48246ae048))
+* **Twitter - Instagram:** Restore standalone onboarding permission prompt blocking ([ea36a69](https://github.com/ahmetxa/piko/commit/ea36a6989723d38a5021ad9eba51469877ee897d))
+
+### ✨ New Features
+* **Twitter - newx:** carry the XMount root-mount support onto v3.12.0-dev.2 ([1fd68d6](https://github.com/ahmetxa/piko/commit/1fd68d6080894f2d051176795cdf98227a659327))
+* **Twitter:** Group patches into NewX patches and Old patches ([5422737](https://github.com/ahmetxa/piko/commit/5422737fd6aed96a21bb73fcdece9990ca113a35))
+* **Twitter:** Add support for newer twitter versions ([7cd08a3](https://github.com/ahmetxa/piko/commit/7cd08a3709022f815343c68afdec9cf19237b967))
+
 ## [0.3.1](https://github.com/ahmetxa/piko-newx/compare/v0.3.0...v0.3.1) (2026-11-15)
 
 * No new patches or commits.
