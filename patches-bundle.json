@@ -1,9 +1,9 @@
 {
-  "version": "v0.4.0",
-  "download_url": "https://github.com/ahmetxa/XMount/releases/download/v0.4.0/patches-0.4.0.mpp",
-  "created_at": "2026-11-17T12:57:35",
-  "description": "XMount patch bundle for Morphe (v0.4.0).",
-  "app_version": "12.43.0-prod.01",
-  "piko_commit": "d09607e910984aa8e433418230f4d99b47e96991",
+  "version": "v0.5.0",
+  "download_url": "https://github.com/ahmetxa/XMount/releases/download/v0.5.0/patches-0.5.0.mpp",
+  "created_at": "2026-11-26T11:07:17",
+  "description": "XMount patch bundle for Morphe (v0.5.0).",
+  "app_version": "12.46.1-prod.01",
+  "piko_commit": "c6d21221776c45bf302dc919546e7c51101deeeb",
   "bundle_name": "XMount"
 }
